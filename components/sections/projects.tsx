@@ -1,5 +1,6 @@
 "use client"
 
+import { useMemo, useState } from "react"
 import { ExternalLink } from "lucide-react"
 import type { IconType } from "react-icons"
 import {
@@ -48,7 +49,19 @@ const skillIconMap: Record<string, { Icon: IconType; colorClass: string }> = {
   WebRTC: { Icon: SiWebrtc, colorClass: "text-orange-400" },
 }
 
+const categoryFilters = ["All", "Web Apps", "Mobile", "SaaS", "AI Agents", "Games"] as const
+
 export function ProjectsSection() {
+  const [selectedCategory, setSelectedCategory] = useState<string>("All")
+
+  const filteredProjects = useMemo(
+    () =>
+      selectedCategory === "All"
+        ? projects
+        : projects.filter((project) => project.category === selectedCategory),
+    [selectedCategory]
+  )
+
   return (
     <section id="projects" className="relative w-full py-24 bg-background border-b-4 border-foreground font-mono text-foreground select-none">
       {/* Background Blueprint Grid Layer */}
@@ -69,9 +82,33 @@ export function ProjectsSection() {
           </p>
         </div>
 
+        {/* Category Filters */}
+        <div className="mb-10 flex flex-wrap items-center gap-3">
+          <span className="text-[11px] font-black uppercase tracking-widest text-muted-foreground">
+            Filter by category:
+          </span>
+          {categoryFilters.map((category) => {
+            const active = selectedCategory === category
+            return (
+              <button
+                key={category}
+                type="button"
+                onClick={() => setSelectedCategory(category)}
+                className={`h-9 px-4 border-2 border-foreground text-[11px] font-black uppercase tracking-wider transition-all duration-75 ${
+                  active
+                    ? "bg-[#FF6B6B] text-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]"
+                    : "bg-background text-foreground hover:bg-muted shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]"
+                }`}
+              >
+                {category}
+              </button>
+            )
+          })}
+        </div>
+
         {/* Projects Retro Card Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.map((project) => (
+          {filteredProjects.map((project) => (
             <div key={project.id} className="relative group">
               {/* Overlapping back accent card layer shadow */}
               <div className="absolute inset-0 border-4 border-foreground bg-[#4D96FF] translate-x-2 translate-y-2 group-hover:translate-x-3 group-hover:translate-y-3 transition-transform duration-75" />
@@ -93,6 +130,22 @@ export function ProjectsSection() {
                 {/* Body Details Block */}
                 <div className="flex-1 p-5 flex flex-col justify-between">
                   <div>
+                    <div className="mb-3 flex flex-wrap items-center gap-2">
+                      <span className="border-2 border-foreground bg-[#4D96FF] px-2 py-1 text-[10px] font-black uppercase tracking-wider text-black">
+                        {project.category}
+                      </span>
+                      <span
+                        className={`border-2 border-foreground px-2 py-1 text-[10px] font-black uppercase tracking-wider text-black ${
+                          project.level === "Beginner"
+                            ? "bg-[#6BCB77]"
+                            : project.level === "Intermediate"
+                              ? "bg-[#FFDE4D]"
+                              : "bg-[#FF6B6B]"
+                        }`}
+                      >
+                        {project.level}
+                      </span>
+                    </div>
                     <h3 className="text-lg font-black text-foreground uppercase tracking-wide mb-2">
                       {project.title}
                     </h3>

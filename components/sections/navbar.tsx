@@ -2,11 +2,10 @@
 
 import { useState, useEffect } from "react"
 import Link from "next/link"
-import { Menu, X, Sun, Moon } from "lucide-react"
+import { Menu, X, Download } from "lucide-react"
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
-  const [isPreviewDark, setIsPreviewDark] = useState(false)
 
   useEffect(() => {
     const handleResize = () => {
@@ -36,8 +35,6 @@ export function Navbar() {
   return (
     <nav className="sticky top-0 z-50 w-full border-b-4 border-foreground bg-background font-mono text-foreground select-none">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-
-        {/* Same navbar height */}
         <div className="relative flex h-22 items-center justify-between md:grid md:grid-cols-3">
 
           {/* Logo */}
@@ -65,8 +62,7 @@ export function Navbar() {
             </Link>
           </div>
 
-
-          {/* Navigation */}
+          {/* Center Navigation Links */}
           <div className="hidden md:flex items-center justify-center gap-2">
             {navItems.map((item) => (
               <button
@@ -97,19 +93,25 @@ export function Navbar() {
             ))}
           </div>
 
-
-          {/* Right side */}
-          {/* <div className="flex items-center justify-end gap-3">
-
-            <button
-              onClick={() => setIsPreviewDark(!isPreviewDark)}
+          {/* Right side: Desktop Download CV Button & Mobile Menu Toggle */}
+          <div className="flex items-center justify-end gap-3">
+            {/* Desktop Download CV Button */}
+            <a
+              href="/cv.pdf"
+              download="Dali_CV.pdf"
               className="
+                hidden md:inline-flex items-center gap-2
                 border-2 
                 border-foreground 
-                bg-muted 
-                p-1.5
-                shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]
-                dark:shadow-[2px_2px_0px_0px_rgba(255,255,255,0.2)]
+                bg-[#D80075] 
+                text-white
+                px-4 
+                py-1.5 
+                text-xs 
+                font-bold 
+                uppercase 
+                shadow-[3px_3px_0px_0px_rgba(0,0,0,1)]
+                dark:shadow-[3px_3px_0px_0px_rgba(255,255,255,0.2)]
                 transition-all
                 hover:translate-x-[1px]
                 hover:translate-y-[1px]
@@ -117,19 +119,12 @@ export function Navbar() {
                 active:translate-y-[2px]
                 active:shadow-none
               "
-              aria-label="Toggle theme layout"
             >
-              {isPreviewDark ? (
-                <Moon className="size-4 text-[#4D96FF]" />
-              ) : (
-                <Sun className="size-4 text-[#FFDE4D]" />
-              )}
-            </button>
+              <Download className="size-4" />
+              <span>Download CV</span>
+            </a>
 
-
-            <div className="hidden md:block w-[40px]" />
-
-
+            {/* Mobile Menu Toggle Button */}
             <div className="flex md:hidden">
               <button
                 onClick={() => setIsOpen(!isOpen)}
@@ -137,7 +132,7 @@ export function Navbar() {
                   border-2 
                   border-foreground 
                   bg-muted 
-                  p-1
+                  p-1.5
                   shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]
                   dark:shadow-[2px_2px_0px_0px_rgba(255,255,255,0.2)]
                   active:translate-x-[1px]
@@ -153,17 +148,14 @@ export function Navbar() {
                 )}
               </button>
             </div>
-
-          </div> */}
+          </div>
         </div>
       </div>
-
 
       {/* Mobile Drawer */}
       {isOpen && (
         <div className="absolute left-0 w-full border-t-4 border-foreground bg-background shadow-[0_10px_0px_0px_rgba(0,0,0,0.1)] md:hidden">
           <div className="flex flex-col space-y-2 px-4 py-4">
-
             {navItems.map((item) => (
               <button
                 key={item.id}
@@ -190,10 +182,36 @@ export function Navbar() {
               </button>
             ))}
 
+            {/* Mobile Download CV Link */}
+            <a
+              href="/cv.pdf"
+              download="Dali_CV.pdf"
+              onClick={() => setIsOpen(false)}
+              className="
+                w-full
+                flex items-center justify-center gap-2
+                border-2
+                border-foreground
+                bg-[#D80075]
+                text-white
+                px-4
+                py-3
+                text-sm
+                font-bold
+                uppercase
+                shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]
+                dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,0.15)]
+                active:translate-x-[2px]
+                active:translate-y-[2px]
+                active:shadow-none
+              "
+            >
+              <Download className="size-4" />
+              <span>Download CV</span>
+            </a>
           </div>
         </div>
       )}
-
     </nav>
   )
 }
