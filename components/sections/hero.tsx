@@ -30,16 +30,10 @@ const itemVariants: Variants = {
 
 export function HeroSection() {
   return (
-    // Uses semantic theme colors. Works with standard Next-Themes / Tailwind Dark mode.
     <section 
       id="home" 
-      className="relative isolate overflow-hidden bg-background text-foreground border-b-4 border-foreground selection:bg-[#FFDE4D] selection:text-black"
+      className="relative isolate overflow-hidden bg-transparent text-foreground border-b-4 border-foreground selection:bg-[#FFDE4D] selection:text-black"
     >
-      {/* Retro Grid Background: 
-        Uses a subtle gray line in light mode, switching to a soft translucent white line in dark mode (dark:bg-...)
-      */}
-      <div className="absolute inset-0 -z-10 bg-[linear-gradient(to_right,#e5e5e0_1px,transparent_1px),linear-gradient(to_bottom,#e5e5e0_1px,transparent_1px)] dark:bg-[linear-gradient(to_right,rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:24px_24px]" />
-
       <div className="relative mx-auto flex min-h-[calc(100svh-4rem)] w-full max-w-4xl flex-col items-center justify-center px-4 py-20 sm:px-6 sm:py-28 lg:px-8">
         <motion.div
           className="w-full text-center"
@@ -47,7 +41,7 @@ export function HeroSection() {
           initial="hidden"
           animate="visible"
         >
-          {/* Badge: Vibrant blue that pops beautifully off dark backgrounds */}
+          {/* Badge */}
           <motion.div
             variants={itemVariants}
             className="mb-6 flex justify-center"
@@ -57,13 +51,13 @@ export function HeroSection() {
             </span>
           </motion.div>
 
-          {/* Name Header: Uses a vibrant coral background block that screams retro gaming */}
+          {/* Name Header */}
           <motion.h1
             variants={itemVariants}
             className="font-mono text-5xl font-extrabold tracking-tight sm:text-7xl lg:text-8xl uppercase"
           >
             Hi, I&apos;m{" "}
-            <span className="bg-[#6109B5] text-black border-2 border-foreground px-3 py-1 inline-block shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] dark:shadow-[6px_6px_0px_0px_rgba(255,255,255,0.2)] -rotate-1">
+            <span className="bg-[#6109B5] text-white border-2 border-foreground px-3 py-1 inline-block shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] dark:shadow-[6px_6px_0px_0px_rgba(255,255,255,0.2)] -rotate-1">
               Dali
             </span>
           </motion.h1>
@@ -75,21 +69,20 @@ export function HeroSection() {
             Turning ideas into modern and scalable web applications.
           </motion.h2>
 
-          {/* Paragraph Box: Semi-transparent container card */}
+          {/* Paragraph Box */}
           <motion.p
             variants={itemVariants}
-            className="mx-auto mt-6 max-w-xl font-mono text-sm leading-relaxed border-2 border-dashed border-foreground/30 bg-muted/30 backdrop-blur-xs p-4"
+            className="mx-auto mt-6 max-w-xl font-mono text-sm leading-relaxed border-2 border-dashed border-foreground/30 bg-black/40 backdrop-blur-xs p-4"
           >
             I build polished, responsive, and performant digital experiences
             with clean architecture, maintainable code, and user-first design.
           </motion.p>
 
-          {/* Tactile Buttons: Styled to bounce cleanly in both modes */}
+          {/* Tactile Buttons */}
           <motion.div
             variants={itemVariants}
             className="mt-12 flex flex-col justify-center gap-5 sm:flex-row"
           >
-            {/* Primary Action (Gumroad Yellow) */}
             <Button
               size="lg"
               onClick={() =>
@@ -103,7 +96,6 @@ export function HeroSection() {
               <ArrowRight className="ml-2 size-5 transition-transform group-hover:translate-x-1" />
             </Button>
 
-            {/* Secondary Action (Inverted background dependent) */}
             <Button
               size="lg"
               variant="outline"

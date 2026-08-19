@@ -60,6 +60,8 @@ const skills: SkillLogo[] = [
   { name: "GitHub", Icon: SiGithub, colorClass: "text-current" },
   { name: "Python", Icon: SiPython, colorClass: "text-[#FFDE4D]" },
   { name: "FastAPI", Icon: SiFastapi, colorClass: "text-teal-400" },
+  { name: "React Native", Icon: SiReact, colorClass: "text-[#4D96FF]"},
+  
 ]
 
 export function SkillsSection() {

@@ -1,3 +1,4 @@
+import KineticGrid from "@/components/ui/kinetic-grid";
 import { AboutSection } from "@/components/sections/about";
 import ContactForm from "@/components/sections/contact";
 import { FooterSection } from "@/components/sections/footer";
@@ -9,14 +10,18 @@ import { SkillsSection } from "@/components/sections/skills";
 export default function Home() {
   return (
     <>
-        <Navbar />
+      <Navbar />
+      
+      {/* Interactive Background only for Hero */}
+      <KineticGrid globalColor="monochrome" className="border-b-4 border-foreground">
         <HeroSection />
-        <AboutSection />
-        <SkillsSection />
-        <ProjectsSection />
-        <ContactForm />
-        <FooterSection />
-    </>
+      </KineticGrid>
 
+      <AboutSection />
+      <SkillsSection />
+      <ProjectsSection />
+      <ContactForm />
+      <FooterSection />
+    </>
   );
 }

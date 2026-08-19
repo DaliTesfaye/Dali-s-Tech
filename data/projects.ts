@@ -44,4 +44,16 @@ export const projects: Project[] = [
     liveDemo: "https://mazraa-roue.netlify.app/",
     github: "https://github.com/DaliTesfaye/Spin-Wheel",
   },
+    {
+    id: "project-4",
+    title: "Shelfie App Mobile App ",
+    description: "A mobile application that allows users to manage their personal library, track reading progress, and discover new books.",
+    image: "https://plain-weur-prod-public.komododecks.com/202608/15/PlGhKJx9egfh2Uk2BT2y/image.jpg",
+    level: "Intermediate",
+    category: "Mobile",
+    skills: ["React.js", "Appwrite", "Javascript"],
+    liveDemo: "https://dalixtech.me/",
+    github: "https://github.com/DaliTesfaye/Shelfie-App",
+  },
+
 ]
