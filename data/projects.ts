@@ -48,31 +48,5 @@ export const projects: Project[] = [
     skills: ["React.js", "PWA", "IndexedDB"],
     liveDemo: "https://mazraa-roue.netlify.app/",
     github: "https://github.com/DaliTesfaye/Spin-Wheel",
-  },
-  {
-    id: "project-4",
-    title: "Street Feast - Pizza Festival Website",
-    description:
-      "A website for a pizza festival that showcases event details, ticketing, and interactive features for attendees.",
-    image:
-      "https://plain-weur-prod-public.komododecks.com/202609/14/1mIesNB0o8kcdE9mwZGC/image.png",
-    level: "Intermediate",
-    category: "Web Apps",
-    skills: ["Next.js", "Typescript", "Tailwind CSS"],
-    liveDemo: "https://pizza-event.vercel.app/",
-    github: "https://github.com/DaliTesfaye/pizza-event",
-  },
-  {
-    id: "project-5",
-    title: "Shelfie App Mobile App ",
-    description:
-      "A mobile application that allows users to manage their personal library, track reading progress, and discover new books.",
-    image:
-      "https://plain-weur-prod-public.komododecks.com/202608/15/PlGhKJx9egfh2Uk2BT2y/image.jpg",
-    level: "Intermediate",
-    category: "Mobile",
-    skills: ["React.js", "Appwrite", "Javascript"],
-    liveDemo: "https://dalixtech.me/",
-    github: "https://github.com/DaliTesfaye/Shelfie-App",
-  },
+  }
 ];
